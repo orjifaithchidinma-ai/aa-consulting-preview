@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions | AA-Consulting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root { 
+            --aa-blue: #3b82f6; 
+            --obsidian: #020617; 
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: radial-gradient(circle at 50% -20%, #ffffff 0%, #f1f5f9 45%, #e2e8f0 100%);
+            color: #1e293b; 
+            margin: 0;
+            overflow-x: hidden;
+        }
+        
+        .glass-nav { 
+            background: rgba(15, 23, 42, 0.9); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12); 
+            border-radius: 100px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+
+        .aa-main-logo {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.15)) brightness(1.1);
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .content-card:hover { transform: translateY(-5px); }
+        .challenge-accent { border-top: 4px solid #ef4444; }
+        .solution-accent { border-top: 4px solid #3b82f6; }
+
+        .vendor-logo { 
+            height: 75px;
+            width: auto;
+            max-width: 300px;
+            object-fit: contain; 
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full top-0 z-[100] p-6">
+        <div class="max-w-7xl mx-auto glass-nav px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="images/AA logo.png" alt="AA-Consulting Logo" class="aa-main-logo">
+                <span class="text-white font-bold tracking-tight uppercase hidden sm:block">AA-Consulting</span>
+            </div>
+            
+            <div class="hidden md:flex gap-10 text-[11px] font-bold uppercase tracking-widest items-center">
+                <a href="index.html" class="text-slate-300 hover:text-white transition">Home</a>
+                <a href="about.html" class="text-slate-300 hover:text-white transition">About Us</a>
+                <a href="solutions.html" class="text-white border-b-2 border-blue-500 pb-1">Solutions</a>
+                <a href="resources.html" class="text-slate-300 hover:text-white transition">Resources</a>
+                <a href="contact.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-48 pb-10 text-center px-6">
+        <h1 class="hero-title" data-aos="fade-up">Strategic <span class="text-blue-600">Defense.</span></h1>
+        <p class="text-slate-500 mt-4 uppercase text-[10px] font-bold tracking-[0.3em]">Full Enterprise Security Stack</p>
+    </header>
+
+    <!-- SecuPi -->
+    <section class="max-w-7xl mx-auto px-6 py-24">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-4 order-last lg:order-first" data-aos="fade-right">
+                <img src="images/SecuPi-logo.png" alt="SecuPi" class="vendor-logo" style="transform: scale(1.4); transform-origin: left center;">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4 tracking-tight">Data Governance</h2>
+                <p class="text-slate-500 text-sm leading-relaxed">Maintaining control and visibility over sensitive data across on-prem, cloud, and APIs.</p>
+            </div>
+            <div class="lg:col-span-8 grid md:grid-cols-2 gap-6">
+                <div class="content-card challenge-accent p-8">
+                    <h4 class="text-red-500 font-bold text-[10px] uppercase mb-4 tracking-widest">The Challenge</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        IT infrastructure expands daily as organizations move to the cloud and adopt new APIs, creating a massive challenge to maintain control over sensitive data. Service accounts, applications, and unauthorized users frequently operate with broad permissions without real-time enforcement. This leaves sensitive information exposed, increasing insider risk and creating significant compliance gaps for data privacy regulations.
+                    </p>
+                </div>
+                <div class="content-card solution-accent p-8">
+                    <h4 class="text-blue-600 font-bold text-[10px] uppercase mb-4 tracking-widest">The Solution</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        SecuPi addresses this by enforcing governance and security directly where data is stored and accessed. It evaluates every single request in real-time to verify identity, context, and policy compliance. By using **Attribute-Based Access Control (ABAC)**, dynamic masking, and row-level filtering, SecuPi ensures users see only what they are authorized to see, enforcing Zero Trust at the data source.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trellix -->
+    <section class="max-w-7xl mx-auto px-6 py-24 border-t border-slate-200">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-8 grid md:grid-cols-2 gap-6">
+                <div class="content-card challenge-accent p-8">
+                    <h4 class="text-red-500 font-bold text-[10px] uppercase mb-4 tracking-widest">The Challenge</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Perimeter security is no longer enough to protect modern enterprises. With over 96% of data breaches involving the database layer, organizations often have "blind spots" where rogue insiders or compromised service accounts exfiltrate massive amounts of sensitive data without ever triggering traditional network alarms or firewall rules.
+                    </p>
+                </div>
+                <div class="content-card solution-accent p-8">
+                    <h4 class="text-blue-600 font-bold text-[10px] uppercase mb-4 tracking-widest">The Solution</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        We deploy Trellix DAM to provide continuous monitoring and automated alerts for all database transactions. By configuring custom rules for failed login attempts and sensitive table access, we ensure full compliance with **PCI-DSS** and **GDPR**, while providing the capability to block suspicious queries in real-time before data is compromised.
+                    </p>
+                </div>
+            </div>
+            <div class="lg:col-span-4" data-aos="fade-left">
+                <img src="images/Trellix_Logo.svg.png" alt="Trellix" class="vendor-logo">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4 tracking-tight">Database Activity Monitoring</h2>
+                <p class="text-slate-500 text-sm leading-relaxed">Real-time auditing and protection for banking and enterprise databases.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CyberArk -->
+    <section class="max-w-7xl mx-auto px-6 py-24 border-t border-slate-200">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-4" data-aos="fade-right">
+                <img src="images/CyberArk Software, Ltd. - Partner Logo.png" alt="CyberArk" class="vendor-logo" style="transform: scale(2.2); transform-origin: left center;">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4 tracking-tight">Identity Security (PAM)</h2>
+                <p class="text-slate-500 text-sm leading-relaxed">Securing the highest level of access within your organization through industry-leading vaulting.</p>
+            </div>
+            <div class="lg:col-span-8 grid md:grid-cols-2 gap-6">
+                <div class="content-card challenge-accent p-8">
+                    <h4 class="text-red-500 font-bold text-[10px] uppercase mb-4 tracking-widest">The Challenge</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Privileged credentials are the top target for hackers. Once compromised, they allow an attacker total control over your IT environment, enabling lateral movement and silent data exfiltration. Without a central vault, passwords are often stored in plain text or never rotated, making it easy for threats to maintain long-term persistence in your system.
+                    </p>
+                </div>
+                <div class="content-card solution-accent p-8">
+                    <h4 class="text-blue-600 font-bold text-[10px] uppercase mb-4 tracking-widest">The Solution</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        We implement CyberArk to isolate, rotate, and record privileged sessions. By using **Just-In-Time (JIT)** access and secure vaulting technology, we ensure that every administrative action is verified, logged, and secure. This eliminates the risk of credential theft and ensures that only the right people have the right access at the right time.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rapid7 -->
+    <section class="max-w-7xl mx-auto px-6 py-24 border-t border-slate-200">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-8 grid md:grid-cols-2 gap-6 order-last lg:order-first">
+                <div class="content-card challenge-accent p-8">
+                    <h4 class="text-red-500 font-bold text-[10px] uppercase mb-4 tracking-widest">The Challenge</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Security teams are drowned in thousands of alerts every day. Without business context and risk prioritization, it is impossible to know which vulnerability poses a real, immediate threat to the business infrastructure. This "vulnerability fatigue" often leads to critical flaws being ignored while teams spend time on low-risk issues.
+                    </p>
+                </div>
+                <div class="content-card solution-accent p-8">
+                    <h4 class="text-blue-600 font-bold text-[10px] uppercase mb-4 tracking-widest">The Solution</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Rapid7 InsightVM provides unified visibility across your entire infrastructure. We help prioritize risks based on actual exploitability and attacker behavior using **Real Risk Scores**. This allows your security team to stop "finding bugs" and start "reducing impact" by focusing on the 1% of vulnerabilities that truly matter.
+                    </p>
+                </div>
+            </div>
+            <div class="lg:col-span-4" data-aos="fade-left">
+                <img src="images/Rapid7 logo.png" alt="Rapid7" class="vendor-logo">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4 tracking-tight">Exposure Management</h2>
+                <p class="text-slate-500 text-sm leading-relaxed">Closing the gap between vulnerability discovery and remediation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vicarius VRX -->
+    <section class="max-w-7xl mx-auto px-6 py-24 border-t border-slate-200">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-4" data-aos="fade-right">
+                <img src="images/VRX LOGO.png" alt="Vicarius VRX" class="vendor-logo" style="transform: scale(1.4); transform-origin: left center;">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4 tracking-tight">Patchless Protection</h2>
+                <p class="text-slate-500 text-sm leading-relaxed">Remediating software risks without the downtime of traditional patching.</p>
+            </div>
+            <div class="lg:col-span-8 grid md:grid-cols-2 gap-6">
+                <div class="content-card challenge-accent p-8">
+                    <h4 class="text-red-500 font-bold text-[10px] uppercase mb-4 tracking-widest">The Challenge</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Traditional patching often breaks applications and requires significant downtime, leading to friction between security and IT teams. Furthermore, many legacy systems remain unpatched because vendors no longer support them, leaving them permanently exposed to known exploits that cannot be fixed through regular updates.
+                    </p>
+                </div>
+                <div class="content-card solution-accent p-8">
+                    <h4 class="text-blue-600 font-bold text-[10px] uppercase mb-4 tracking-widest">The Solution</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Vicarius VRX provides a single, cohesive platform for finding and fixing vulnerabilities. Its standout feature, **Patchless Protection**, allows us to secure applications at the binary level. This shields your infrastructure from exploits even when a vendor patch hasn't been released or if the system is too critical to take offline.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 text-center border-t border-slate-200">
+        <p class="text-slate-400 text-[10px] font-bold uppercase tracking-[0.4em]">© 2026 AA-CONSULTING | SECURING DIGITAL CAPITAL</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>

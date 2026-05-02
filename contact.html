@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | AA-Consulting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root { 
+            --aa-blue: #3b82f6; 
+        }
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #ffffff; 
+            color: #334155; 
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            margin-top: 24px;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .nav-link {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #94a3b8;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover { color: white; }
+
+        .contact-input {
+            width: 100%;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-input:focus {
+            background: #ffffff;
+            border-color: var(--aa-blue);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        .office-card {
+            border-left: 3px solid #e2e8f0;
+            padding-left: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .office-card:hover {
+            border-left-color: var(--aa-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header class="px-6 md:px-12 fixed w-full top-0 z-[100] flex justify-center">
+        <div class="glass-nav px-8 py-4">
+            <nav class="flex justify-between items-center w-full">
+                <div class="flex items-center gap-4">
+                    <img src="images/AA logo.png" alt="Logo" class="h-10 w-auto">
+                    <span class="text-white font-extrabold text-lg tracking-tighter uppercase hidden lg:block">AA-Consulting</span>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-10">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <a href="solutions.html" class="nav-link">Solutions</a>
+                    <a href="resources.html" class="nav-link">Resources</a>
+                    <a href="contact.html" class="bg-blue-600 text-white px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest ring-2 ring-blue-400 ring-offset-2 ring-offset-slate-900 transition-all">Contact Us</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-48 pb-20 px-6 md:px-12">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-20">
+                
+                <!-- Contact Form Section -->
+                <div data-aos="fade-right">
+                    <span class="text-blue-600 font-bold text-[10px] uppercase tracking-[0.3em] mb-4 block">Connect With Us</span>
+                    <h1 class="text-6xl font-black text-slate-900 tracking-tighter mb-8">Secure Your <br><span class="text-blue-600">Digital Capital.</span></h1>
+                    
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Full Name</label>
+                                <input type="text" class="contact-input" placeholder="Enter name">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Email Address</label>
+                                <input type="email" class="contact-input" placeholder="email@company.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Inquiry Type</label>
+                            <select class="contact-input">
+                                <option>General Inquiry</option>
+                                <option>Trellix ENS/ESM Setup</option>
+                                <option>CyberArk Implementation</option>
+                                <option>SecuPi Data Governance</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">How can we help?</label>
+                            <textarea rows="5" class="contact-input" placeholder="Describe your security requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-slate-900 hover:bg-blue-600 text-white font-black uppercase tracking-widest py-5 rounded-xl transition-all duration-300">
+                            Send Secure Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Global Offices Section -->
+                <div class="lg:pl-12 space-y-12" data-aos="fade-left">
+                    <div>
+                        <h2 class="text-2xl font-black text-slate-900 mb-8">Global Footprint</h2>
+                        
+                        <div class="space-y-10">
+                            <div class="office-card">
+                                <h4 class="text-blue-600 font-black text-xs uppercase tracking-widest mb-2">Headquarters</h4>
+                                <p class="text-slate-900 font-bold text-lg mb-1">Israel</p>
+                                <p class="text-slate-500 text-sm">Strategic technology hub and primary consulting operations.</p>
+                            </div>
+
+                            <div class="office-card">
+                                <h4 class="text-blue-600 font-black text-xs uppercase tracking-widest mb-2">West Africa</h4>
+                                <p class="text-slate-900 font-bold text-lg mb-1">Lagos, Nigeria</p>
+                                <p class="text-slate-500 text-sm">Deploying local security solutions since 2001.</p>
+                            </div>
+
+                            <div class="office-card">
+                                <h4 class="text-blue-600 font-black text-xs uppercase tracking-widest mb-2">East Africa</h4>
+                                <p class="text-slate-900 font-bold text-lg mb-1">Addis Ababa, Ethiopia</p>
+                                <p class="text-slate-500 text-sm">Specialized regional support established in 2022.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-[32px] p-10 text-white">
+                        <h3 class="text-xl font-bold mb-6">Direct Email</h3>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-sm">✉</div>
+                            <div>
+                                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Response within 24h</p>
+                                <p class="font-bold">info@aa-consulting.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-12 border-t border-slate-100 text-center">
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">© 2026 AA-Consulting | Securing Digital Capital</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>
