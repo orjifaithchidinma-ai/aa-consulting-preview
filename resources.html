@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources Hub | AA-Consulting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root { 
+            --aa-blue: #3b82f6; 
+            --obsidian: #030712; 
+            --hero-light: #f8fafc; 
+        }
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #f8fafc; 
+            color: #0f172a; 
+            margin: 0; 
+            overflow-x: hidden; 
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #94a3b8;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: white;
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: #020617; 
+            z-index: 150;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 5rem;
+            padding-bottom: 2rem;
+            overflow-y: auto;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-20px);
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .mobile-nav-link {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .mobile-nav-link:hover, .mobile-nav-link.active {
+            color: #3b82f6;
+        }
+
+        /* SOLUTIONS DROPDOWN STYLING */
+        .dropdown-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(12px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+            padding-top: 12px;
+            width: 580px;
+            z-index: 9999;
+        }
+
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        .solution-dropdown-item {
+            transition: all 0.2s ease;
+            background: rgba(13, 27, 51, 0.6);
+        }
+
+        .solution-dropdown-item:hover {
+            background-color: rgba(37, 99, 235, 0.2);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+
+        .hero-section { 
+            background-color: var(--hero-light); 
+            background-image: radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 40%), radial-gradient(circle at 10% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 40%); 
+            border-bottom: 1px solid #e2e8f0; 
+        }
+
+        .section-label { 
+            display: inline-block; 
+            background: #dbeafe; 
+            color: #2563eb; 
+            padding: 6px 16px; 
+            border-radius: 6px; 
+            font-size: 11px; 
+            font-weight: 800; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+            margin-bottom: 1.5rem; 
+        }
+
+        .resource-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s ease;
+            border-left: 4px solid #e2e8f0;
+        }
+
+        .resource-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05);
+        }
+
+        .action-link { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+            font-size: 0.825rem; 
+            font-weight: 700; 
+            color: #2563eb; 
+            transition: color 0.2s ease; 
+            position: relative; 
+            align-self: flex-start; 
+            margin-top: auto; 
+        }
+
+        .action-link::after { 
+            content: ''; 
+            position: absolute; 
+            width: 100%; 
+            transform: scaleX(0); 
+            height: 1.5px; 
+            bottom: -2px; 
+            left: 0; 
+            background-color: #1d4ed8; 
+            transform-origin: bottom left; 
+            transition: transform 0.25s ease-out; 
+        }
+
+        .resource-card:hover .action-link::after { 
+            transform: scaleX(1); 
+        }
+
+        .filter-btn { 
+            transition: all 0.2s ease; 
+        }
+
+        .filter-btn:not(.active):hover {
+            color: #0f172a !important;
+        }
+
+        .filter-btn.active { 
+            background-color: #0f172a; 
+            color: #ffffff; 
+            border-color: #0f172a; 
+        }
+    </style>
+</head>
+<body>
+
+<!-- SYNCED HEADER INTERFACE -->
+<header class="fixed -top-3 left-0 w-full z-[100] px-4 md:px-6 pt-3 flex justify-center pointer-events-none">
+    <div class="w-full max-w-[98vw] bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-full px-5 py-3.5 md:px-12 md:py-4 shadow-xl pointer-events-auto">
+        <nav class="flex justify-between items-center w-full">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center gap-4 group">
+                    <img src="images/AA logo.png" alt="AA Consulting Logo" style="height: 40px; width: auto;" class="brightness-110 transition-transform group-hover:scale-105">
+                    <span class="text-white text-lg tracking-wide uppercase hidden lg:block" style="font-family: 'Montserrat', sans-serif; font-weight: 800;">AA-Consulting</span>
+                </a>
+            </div>
+
+            <!-- MOBILE MENU BUTTON -->
+            <button type="button" onclick="toggleMobileMenu()" class="flex flex-col gap-1.5 cursor-pointer md:hidden p-2 focus:outline-none" aria-label="Toggle Menu">
+                <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+            </button>
+
+            <!-- DESKTOP NAVIGATION -->
+            <div class="hidden md:flex flex-row items-center gap-6 md:gap-10">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                
+                <!-- SOLUTIONS DROPDOWN -->
+                <div class="dropdown-wrapper">
+                    <a href="solutions.html" class="nav-link flex items-center gap-1.5">
+                        Solutions
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <div class="bg-[#081326]/95 backdrop-blur-2xl border border-blue-500/30 rounded-2xl p-4 shadow-[0_20px_50px_rgba(8,19,38,0.9)] grid grid-cols-2 gap-2 text-left">
+                            
+                            <a href="solutions.html#paloalto" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">Palo Alto</div>
+                                    <div class="text-slate-400 text-[10px]">Next-Gen Perimeter Defense</div>
+                                </div>
+                            </a>
+
+                            <a href="solutions.html#cyberark" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">CyberArk</div>
+                                    <div class="text-slate-400 text-[10px]">Identity Security & PAM</div>
+                                </div>
+                            </a>
+
+                            <a href="solutions.html#vicarius" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">Vicarius</div>
+                                    <div class="text-slate-400 text-[10px]">Vulnerability Management</div>
+                                </div>
+                            </a>
+
+                            <a href="solutions.html#akeyless" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0115.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">Akeyless</div>
+                                    <div class="text-slate-400 text-[10px]">Vaultless Secrets Management</div>
+                                </div>
+                            </a>
+
+                            <a href="solutions.html#deepkeep" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">DeepKeep</div>
+                                    <div class="text-slate-400 text-[10px]">AI & LLM Security Platform</div>
+                                </div>
+                            </a>
+
+                            <a href="solutions.html#trellix" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-red-500/15 border border-red-500/30 flex items-center justify-center text-red-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">Trellix</div>
+                                    <div class="text-slate-400 text-[10px]">Database Security & DAM</div>
+                                </div>
+                            </a>
+
+                            <a href="solutions.html#cynet" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">Cynet</div>
+                                    <div class="text-slate-400 text-[10px]">All-in-One Autonomous XDR</div>
+                                </div>
+                            </a>
+
+                            <a href="solutions.html#commugen" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-sky-500/15 border border-sky-500/30 flex items-center justify-center text-sky-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">Commugen</div>
+                                    <div class="text-slate-400 text-[10px]">Cyber GRC & Automation</div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <a href="resources.html" class="nav-link active">
+                    Resources
+                    <span style="position: absolute; bottom: -6px; left: 0; width: 100%; height: 2px; background-color: #2563eb; display: block;"></span>
+                </a>
+                <a href="contact.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full transition-all shadow-lg shadow-blue-600/20 text-[14px] font-bold">BOOK A DEMO</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- MOBILE OVERLAY INTERFACE WITH ACCORDION -->
+<div id="mobileMenu" class="mobile-overlay">
+    <button onclick="toggleMobileMenu()" class="absolute top-8 right-8 text-slate-400 hover:text-white p-2 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+
+    <div class="flex flex-col items-center gap-6 text-center w-full max-w-xs px-6">
+        <a href="index.html" class="mobile-nav-link" onclick="toggleMobileMenu()">Home</a>
+        <a href="about.html" class="mobile-nav-link" onclick="toggleMobileMenu()">About Us</a>
+        
+        <!-- MOBILE SOLUTIONS ACCORDION -->
+        <div class="w-full">
+            <button onclick="toggleMobileSubmenu()" class="mobile-nav-link flex items-center justify-center gap-2 w-full">
+                Solutions
+                <svg id="mobileSubmenuArrow" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div id="mobileSubmenu" class="hidden flex-col gap-3 pt-4 text-xs font-semibold text-slate-300">
+                <a href="solutions.html#paloalto" class="hover:text-blue-400 py-1" onclick="toggleMobileMenu()">Palo Alto Networks</a>
+                <a href="solutions.html#cyberark" class="hover:text-blue-400 py-1" onclick="toggleMobileMenu()">CyberArk</a>
+                <a href="solutions.html#vicarius" class="hover:text-blue-400 py-1" onclick="toggleMobileMenu()">Vicarius</a>
+                <a href="solutions.html#akeyless" class="hover:text-blue-400 py-1" onclick="toggleMobileMenu()">Akeyless</a>
+                <a href="solutions.html#deepkeep" class="hover:text-blue-400 py-1" onclick="toggleMobileMenu()">DeepKeep</a>
+                <a href="solutions.html#trellix" class="hover:text-blue-400 py-1" onclick="toggleMobileMenu()">Trellix</a>
+                <a href="solutions.html#cynet" class="hover:text-blue-400 py-1" onclick="toggleMobileMenu()">Cynet</a>
+                <a href="solutions.html#commugen" class="hover:text-blue-400 py-1" onclick="toggleMobileMenu()">Commugen</a>
+            </div>
+        </div>
+
+        <a href="resources.html" class="mobile-nav-link active" onclick="toggleMobileMenu()">Resources</a>
+        <a href="contact.html" class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-8 rounded-full shadow-xl shadow-blue-600/20 text-sm tracking-widest uppercase mt-4 transition-all" onclick="toggleMobileMenu()">Contact Us</a>
+    </div>
+</div>
+
+<section class="hero-section pt-36 md:pt-44 pb-12 text-center px-6">
+    <div class="max-w-7xl mx-auto" data-aos="fade-up">
+        <span class="section-label">Knowledge Hub</span>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 mb-2 leading-[1.05]" style="font-family: 'Montserrat', sans-serif;">Defense & <span class="text-blue-600">Insight.</span></h1>
+    </div>
+</section>
+
+<section class="py-12 max-w-7xl mx-auto px-6">
+    <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <h2 class="text-lg font-bold text-slate-900">Knowledge Center Base</h2>
+            <input type="text" id="hub-search" placeholder="Search documentation..." class="w-full lg:w-96 p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm">
+        </div>
+        <div class="flex flex-wrap gap-2 mt-5 pt-4 border-t border-slate-100" id="hub-filters">
+            <button class="filter-btn active px-4 py-1.5 border border-slate-200 rounded-xl text-xs font-bold" data-filter="all">All Modules</button>
+            <button class="filter-btn px-4 py-1.5 border border-slate-200 rounded-xl text-xs font-bold" data-filter="cyberark">CyberArk</button>
+            <button class="filter-btn px-4 py-1.5 border border-slate-200 rounded-xl text-xs font-bold" data-filter="vicarius">Vicarius</button>
+            <button class="filter-btn px-4 py-1.5 border border-slate-200 rounded-xl text-xs font-bold" data-filter="cynet">Cynet</button>
+            <button class="filter-btn px-4 py-1.5 border border-slate-200 rounded-xl text-xs font-bold" data-filter="trellix">Trellix</button>
+        </div>
+    </div>
+</section>
+
+<section class="max-w-7xl mx-auto px-6 pb-20">
+   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="hub-grid">
+    
+    <!-- CYBERARK -->
+    <div class="resource-card" data-company="cyberark">
+        <h3 class="font-bold text-slate-900 mb-2 item-title">CyberArk White Paper</h3>
+        <p class="text-slate-500 text-xs mb-4 item-desc">Identity security integrations and privileged access governance.</p>
+        <a href="Docs/AA-Consulting-Cyberark-White-Paper.pdf" target="_blank" class="action-link">Download →</a>
+    </div>
+    <div class="resource-card" data-company="cyberark">
+        <h3 class="font-bold text-slate-900 mb-2 item-title">Core Privileged Access Security</h3>
+        <p class="text-slate-500 text-xs mb-4 item-desc">Implementation rules for credential isolation and rotation.</p>
+        <a href="Docs/Core-Privileged-Access-Security-ds.pdf" target="_blank" class="action-link">Download →</a>
+    </div>
+    <div class="resource-card" data-company="cyberark">
+        <h3 class="font-bold text-slate-900 mb-2 item-title">CyberArk Threat Report</h3>
+        <p class="text-slate-500 text-xs mb-4 item-desc">Analysis of credential stealing malware and identity security.</p>
+        <a href="Docs/CyberArk_Threat_Report_eBook-FINAL.pdf" target="_blank" class="action-link">Download →</a>
+    </div>
+
+    <!-- VICARIUS -->
+    <div class="resource-card" data-company="vicarius">
+        <h3 class="font-bold text-slate-900 mb-2 item-title">White Paper on Vicarius</h3>
+        <p class="text-slate-500 text-xs mb-4 item-desc">Autonomous patch execution and predictive risk modeling.</p>
+        <a href="Docs/AA-Consulting-White-Paper-On-Vicarius.pdf" target="_blank" class="action-link">Download →</a>
+    </div>
+
+    <!-- TRELLIX -->
+    <div class="resource-card" data-company="trellix">
+        <h3 class="font-bold text-slate-900 mb-2 item-title">Data Center Security: Databases</h3>
+        <p class="text-slate-500 text-xs mb-4 item-desc">Protecting structured repositories against query injections.</p>
+        <a href="Docs/ds-data-center-security-suite-databases-1.pdf" target="_blank" class="action-link">Download →</a>
+    </div>
+    <div class="resource-card" data-company="trellix">
+        <h3 class="font-bold text-slate-900 mb-2 item-title">Data Center Security: Operations</h3>
+        <p class="text-slate-500 text-xs mb-4 item-desc">Advanced discovery and configuration tracking.</p>
+        <a href="Docs/ds-data-center-security-suite-databases.pdf" target="_blank" class="action-link">Download →</a>
+    </div>
+    <div class="resource-card" data-company="trellix">
+        <h3 class="font-bold text-slate-900 mb-2 item-title">Database Activity Monitoring</h3>
+        <p class="text-slate-500 text-xs mb-4 item-desc">Continuous runtime performance and protection protocols.</p>
+        <a href="Docs/ds-database-activity-monitoring.pdf" target="_blank" class="action-link">Download →</a>
+    </div>
+    <div class="resource-card" data-company="trellix">
+        <h3 class="font-bold text-slate-900 mb-2 item-title">Database Security Solution Evaluation</h3>
+        <p class="text-slate-500 text-xs mb-4 item-desc">Comparative analysis of database storage defenses.</p>
+        <a href="Docs/Not-all-database-security-solutions-are-equal.pdf" target="_blank" class="action-link">Download →</a>
+    </div>
+    <div class="resource-card" data-company="cynet">
+        <h3 class="font-bold text-slate-900 mb-2 item-title">Cynet White Paper</h3>
+        <p class="text-slate-500 text-xs mb-4 item-desc">Comprehensive security overview and technical white paper.</p>
+        <a href="Docs/Cynet%20white%20paper%20AA-Consulting.pdf" target="_blank" class="action-link">Download →</a>
+    </div>
+    <div class="resource-card" data-company="trellix">
+        <h3 class="font-bold text-slate-900 mb-2 item-title">Enterprise Ransomware Protection</h3>
+        <p class="text-slate-500 text-xs mb-4 item-desc">Defeating storage extortion through kernel integrity validation.</p>
+        <a href="Docs/wp-protect-enterprise-database-ransomware.pdf" target="_blank" class="action-link">Download →</a>
+    </div>
+
+</div>
+</section>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    function toggleMobileSubmenu() {
+        const submenu = document.getElementById('mobileSubmenu');
+        const arrow = document.getElementById('mobileSubmenuArrow');
+        submenu.classList.toggle('hidden');
+        submenu.classList.toggle('flex');
+        arrow.classList.toggle('rotate-180');
+    }
+
+    const searchInput = document.getElementById('hub-search');
+    const filtersContainer = document.getElementById('hub-filters');
+    const cards = document.querySelectorAll('.resource-card');
+
+    function filterGrid() {
+        const query = searchInput.value.toLowerCase();
+        const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+
+        cards.forEach(card => {
+            const comp = card.getAttribute('data-company');
+            const title = card.querySelector('.item-title')?.textContent.toLowerCase() || '';
+            const desc = card.querySelector('.item-desc')?.textContent.toLowerCase() || '';
+
+            const matchTab = (activeFilter === 'all' || comp === activeFilter);
+            const matchText = (title.includes(query) || desc.includes(query));
+
+            card.style.display = (matchTab && matchText) ? '' : 'none';
+        });
+    }
+
+    searchInput.addEventListener('input', filterGrid);
+    filtersContainer.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn');
+        if(!btn) return;
+        filtersContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterGrid();
+    });
+</script>
+</body>
+</html>

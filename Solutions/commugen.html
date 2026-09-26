@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commugen Cyber GRC & Automation Platform | AA-Consulting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --aa-blue: #2563eb; 
+            --obsidian: #0f172a; 
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            color: #0f172a;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION STYLES */
+        .nav-link {
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #94a3b8;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: white;
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: #020617; 
+            z-index: 150;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 5rem;
+            padding-bottom: 2rem;
+            overflow-y: auto;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-20px);
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .mobile-nav-link {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .mobile-nav-link:hover, .mobile-nav-link.active {
+            color: #2563eb;
+        }
+
+        /* CUSTOM DROPDOWN STYLES */
+        .dropdown-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+            padding-top: 12px;
+        }
+
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        /* HERO GRADIENT */
+        .mini-hero {
+            background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0b1120 100%);
+            position: relative;
+        }
+
+        .mini-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+        }
+
+        /* ELEVATED CARD */
+        .solution-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
+            position: relative;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #2563eb;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+
+        .capability-item {
+            transition: background-color 0.2s ease;
+        }
+
+        .capability-item:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- UNIFORM HEADER INTERFACE -->
+    <header class="fixed top-0 left-0 w-full z-[100] px-4 md:px-6 pt-3 flex justify-center pointer-events-none">
+        <div class="w-full max-w-[98vw] bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-full px-5 py-3.5 md:px-12 md:py-4 shadow-xl pointer-events-auto">
+            <nav class="flex justify-between items-center w-full">
+                
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center gap-4 group">
+                        <img src="../images/AA logo.png" alt="AA Consulting Logo" style="height: 40px; width: auto;" class="brightness-110 transition-transform group-hover:scale-105">
+                        <span class="text-white text-lg tracking-wide uppercase hidden lg:block" style="font-family: 'Montserrat', sans-serif; font-weight: 800;">AA-Consulting</span>
+                    </a>
+                </div>
+                
+                <!-- MOBILE MENU BUTTON -->
+                <button type="button" onclick="toggleMobileMenu()" class="flex flex-col gap-1.5 cursor-pointer md:hidden p-2 focus:outline-none" aria-label="Toggle Menu">
+                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                </button>
+                
+                <!-- DESKTOP NAVIGATION -->
+                <div class="hidden md:flex flex-row items-center gap-6 md:gap-10">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="../about.html" class="nav-link">About Us</a>
+                    
+                    <!-- SOLUTIONS DROPDOWN -->
+                    <div class="dropdown-wrapper group">
+                        <a href="../solutions.html" class="nav-link active flex items-center gap-1.5 py-2">
+                            Solutions
+                            <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                            <span class="absolute -bottom-1 left-0 w-full h-[2px] bg-blue-600"></span>
+                        </a>
+
+                        <!-- DROPDOWN PANEL -->
+                        <div class="dropdown-menu w-[520px]">
+                            <div class="bg-slate-900/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-4 shadow-2xl grid grid-cols-2 gap-2">
+                                <a href="palo-alto.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
+                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-bold text-white tracking-wider uppercase">Palo Alto</div>
+                                        <div class="text-[11px] text-slate-400">Next-Gen Perimeter Defense</div>
+                                    </div>
+                                </a>
+
+                                <a href="cyberark.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
+                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 0121 9z"></path></svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-bold text-white tracking-wider uppercase">CyberArk</div>
+                                        <div class="text-[11px] text-slate-400">Identity Security & PAM</div>
+                                    </div>
+                                </a>
+
+                                <a href="vicarius.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
+                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-bold text-white tracking-wider uppercase">Vicarius</div>
+                                        <div class="text-[11px] text-slate-400">Patchless Vulnerability Mgmt</div>
+                                    </div>
+                                </a>
+
+                                <a href="akeyless.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
+                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-bold text-white tracking-wider uppercase">Akeyless</div>
+                                        <div class="text-[11px] text-slate-400">Vaultless Secrets Management</div>
+                                    </div>
+                                </a>
+
+                                <a href="deepkeep.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
+                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-bold text-white tracking-wider uppercase">DeepKeep</div>
+                                        <div class="text-[11px] text-slate-400">AI & LLM Security Platform</div>
+                                    </div>
+                                </a>
+
+                                <a href="trellix.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
+                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-bold text-white tracking-wider uppercase">Trellix</div>
+                                        <div class="text-[11px] text-slate-400">Database Security & DAM</div>
+                                    </div>
+                                </a>
+
+                                <a href="cynet.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
+                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-bold text-white tracking-wider uppercase">Cynet</div>
+                                        <div class="text-[11px] text-slate-400">All-in-One Autonomous XDR</div>
+                                    </div>
+                                </a>
+
+                                <a href="commugen.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
+                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-bold text-white tracking-wider uppercase">Commugen</div>
+                                        <div class="text-[11px] text-slate-400">Cyber GRC & Automation</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="../resources.html" class="nav-link">Resources</a>
+                    <a href="../contact.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full transition-all shadow-lg shadow-blue-600/20 text-[14px] font-bold">Contact Us</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MOBILE OVERLAY MENU -->
+    <div id="mobileMenu" class="mobile-overlay">
+        <button onclick="toggleMobileMenu()" class="absolute top-8 right-8 text-slate-400 hover:text-white p-2 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <div class="flex flex-col items-center gap-6 text-center w-full max-w-xs px-6">
+            <a href="../index.html" class="mobile-nav-link" onclick="toggleMobileMenu()">Home</a>
+            <a href="../about.html" class="mobile-nav-link" onclick="toggleMobileMenu()">About Us</a>
+            
+            <div class="w-full">
+                <button onclick="toggleMobileSubmenu()" class="mobile-nav-link active flex items-center justify-center gap-2 w-full">
+                    Solutions
+                    <svg id="mobileSubmenuArrow" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div id="mobileSubmenu" class="hidden flex-col gap-3 pt-4 text-xs font-semibold text-slate-300">
+                    <a href="palo-alto.html" class="hover:text-blue-400 py-1">Palo Alto Networks</a>
+                    <a href="cyberark.html" class="hover:text-blue-400 py-1">CyberArk</a>
+                    <a href="vicarius.html" class="hover:text-blue-400 py-1">Vicarius</a>
+                    <a href="akeyless.html" class="hover:text-blue-400 py-1">Akeyless</a>
+                    <a href="deepkeep.html" class="hover:text-blue-400 py-1">DeepKeep</a>
+                    <a href="trellix.html" class="hover:text-blue-400 py-1">Trellix</a>
+                    <a href="cynet.html" class="hover:text-blue-400 py-1">Cynet</a>
+                    <a href="commugen.html" class="hover:text-blue-400 py-1">Commugen</a>
+                </div>
+            </div>
+
+            <a href="../resources.html" class="mobile-nav-link" onclick="toggleMobileMenu()">Resources</a>
+            <a href="../contact.html" class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-8 rounded-full shadow-xl shadow-blue-600/20 text-sm tracking-widest uppercase mt-4 transition-all" onclick="toggleMobileMenu()">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- 1. MINI HERO SECTION -->
+    <section class="mini-hero text-white pt-36 pb-16 md:pt-40 md:pb-20 px-6 md:px-16 text-center">
+        <div class="max-w-4xl mx-auto space-y-6">
+            
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-400 text-xs font-semibold tracking-wider">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                <span>Cyber Governance, Risk & Compliance</span>
+            </div>
+
+            <h1 class="text-3xl md:text-5xl font-bold tracking-normal text-white leading-tight">
+                Commugen Cyber GRC Automation
+            </h1>
+
+            <p class="text-slate-300 text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
+                Automate cybersecurity governance, risk, and compliance through automated workflows, dashboards, and intelligent capabilities[cite: 6].
+            </p>
+
+            <div class="pt-2 flex flex-wrap justify-center gap-4">
+                <a href="#solution-details" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-7 py-3 rounded-full transition-all text-xs uppercase tracking-wider">
+                    Explore Solution
+                </a>
+                <a href="#contact-cta" class="border border-slate-700 bg-slate-800/60 hover:bg-slate-700 text-slate-200 font-semibold px-7 py-3 rounded-full transition-all text-xs uppercase tracking-wider">
+                    Book a Demo
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 2 & 3. PROBLEM STATEMENT & IN-DEPTH SOLUTION -->
+    <section id="solution-details" class="py-20 md:py-24 px-6 md:px-16 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
+            <!-- LEFT COLUMN: PROBLEM STATEMENT -->
+            <div class="lg:col-span-6 space-y-7">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-red-50 text-red-600 border border-red-100 text-xs font-semibold tracking-wide">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                    <span>THE CYBER GRC CHALLENGE</span>
+                </div>
+
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-normal leading-snug">
+                    Overcoming Manual Spreadsheets & Disconnected Processes
+                </h2>
+
+                <div class="space-y-4 text-slate-600 text-base md:text-lg leading-relaxed font-normal">
+                    <p>
+                        Cybersecurity is not only about preventing attacks. Organizations must also understand their cyber risk, manage vulnerabilities, demonstrate compliance, maintain policies, assess third parties and provide leadership with a clear view of their security posture[cite: 6].
+                    </p>
+                    <p>
+                        Many organizations still manage risk, compliance activities, assessments and evidence through spreadsheets, emails and disconnected processes[cite: 6]. As requirements increase, these manual processes become difficult to maintain and offer limited visibility[cite: 6].
+                    </p>
+                </div>
+
+                <div class="pt-6 border-t border-slate-200">
+                    <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">The Core Goal</span>
+                    <p class="text-base md:text-lg font-semibold text-slate-900 leading-normal">
+                        Streamline governance, risk, and compliance while improving visibility, accountability, and operational efficiency[cite: 6].
+                    </p>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: SOLUTION INTRODUCED IN-DEPTH -->
+            <div class="lg:col-span-6">
+                <div class="solution-card p-8 md:p-10 rounded-2xl">
+                    
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 text-blue-600 border border-blue-100 text-xs font-semibold tracking-wide mb-6">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                        <span>OUR COMMUGEN SOLUTION</span>
+                    </div>
+
+                    <h3 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-normal leading-snug mb-5">
+                        No-Code Cyber GRC Automation
+                    </h3>
+
+                    <div class="space-y-4 text-slate-600 text-base leading-relaxed font-normal mb-8">
+                        <p>
+                            In partnership with Commugen, AA-Consulting supports organizations in implementing a no-code Cyber GRC automation platform[cite: 6].
+                        </p>
+                        <p>
+                            The platform helps security and risk teams bring risk, compliance, vulnerabilities, assets, third-party risk, and related activities into a centralized, structured environment[cite: 6].
+                        </p>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-100">
+                        <span class="block text-xs font-bold uppercase tracking-wider text-blue-600 mb-3">Platform Highlights</span>
+                        <div class="flex flex-wrap gap-2 text-xs font-semibold text-slate-700">
+                            <span class="px-3 py-1.5 bg-slate-100 rounded-md border border-slate-200/60">No-Code Adaptability</span>
+                            <span class="px-3 py-1.5 bg-slate-100 rounded-md border border-slate-200/60">Automated Workflows</span>
+                            <span class="px-3 py-1.5 bg-slate-100 rounded-md border border-slate-200/60">Executive Dashboards</span>
+                            <span class="px-3 py-1.5 bg-slate-100 rounded-md border border-slate-200/60">Multi-Framework Support</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. KEY FEATURES OFFERED BY THE SOLUTION -->
+    <section class="bg-[#0b1120] text-white py-20 md:py-24 px-6 md:px-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="mb-12">
+                <span class="text-blue-400 font-semibold text-xs uppercase tracking-wider block mb-2">Capabilities & Features</span>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-normal text-white">
+                    Commugen Core Capabilities
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 border-t border-slate-800/80 pt-10">
+                
+                <div class="capability-item p-4 rounded-xl flex gap-5 items-start">
+                    <span class="text-lg font-bold text-blue-400 font-mono">01</span>
+                    <div>
+                        <h4 class="text-lg font-bold text-white mb-2 tracking-normal">Adaptable No-Code Architecture</h4>
+                        <p class="text-slate-400 text-sm md:text-base font-normal leading-relaxed">
+                            Adapt your GRC processes to changing requirements without relying on code[cite: 6].
+                        </p>
+                    </div>
+                </div>
+
+                <div class="capability-item p-4 rounded-xl flex gap-5 items-start">
+                    <span class="text-lg font-bold text-blue-400 font-mono">02</span>
+                    <div>
+                        <h4 class="text-lg font-bold text-white mb-2 tracking-normal">Automated GRC Tasks</h4>
+                        <p class="text-slate-400 text-sm md:text-base font-normal leading-relaxed">
+                            Automate the GRC tasks that consume your team's time and reduce manual effort[cite: 6].
+                        </p>
+                    </div>
+                </div>
+
+                <div class="capability-item p-4 rounded-xl flex gap-5 items-start">
+                    <span class="text-lg font-bold text-blue-400 font-mono">03</span>
+                    <div>
+                        <h4 class="text-lg font-bold text-white mb-2 tracking-normal">Centralized Evidence & Controls</h4>
+                        <p class="text-slate-400 text-sm md:text-base font-normal leading-relaxed">
+                            Bring controls, evidence, assessments, and remediation into one unified environment[cite: 6].
+                        </p>
+                    </div>
+                </div>
+
+                <div class="capability-item p-4 rounded-xl flex gap-5 items-start">
+                    <span class="text-lg font-bold text-blue-400 font-mono">04</span>
+                    <div>
+                        <h4 class="text-lg font-bold text-white mb-2 tracking-normal">Multi-Framework Management</h4>
+                        <p class="text-slate-400 text-sm md:text-base font-normal leading-relaxed">
+                            Manage multiple compliance frameworks simultaneously without managing them separately[cite: 6].
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. VALUE PROPOSITION TO THE CLIENT -->
+    <section class="py-20 md:py-24 px-6 md:px-16 bg-slate-50/70 border-t border-b border-slate-200">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-blue-600 font-semibold text-xs uppercase tracking-wider block mb-2">Measurable Impact</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-normal leading-snug">
+                    What Your Organization Stands to Gain
+                </h2>
+                <p class="text-slate-600 text-base md:text-lg mt-3 font-normal leading-relaxed">
+                    Deploying Commugen with AA-Consulting delivers clear business value across risk visibility, decision-making, and organizational resilience[cite: 6].
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Value 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm transition-all hover:shadow-md">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 border border-blue-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 tracking-normal">Enhanced Risk Visibility</h3>
+                    <p class="text-slate-600 text-sm md:text-base font-normal leading-relaxed">
+                        Gain a clearer view of your organization's cyber risk and what requires immediate attention[cite: 6].
+                    </p>
+                </div>
+
+                <!-- Value 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm transition-all hover:shadow-md">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 border border-blue-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 tracking-normal">Data-Driven Decisions</h3>
+                    <p class="text-slate-600 text-sm md:text-base font-normal leading-relaxed">
+                        Turn complex GRC data and cyber risks into clear, measurable insights for better risk-based decisions[cite: 6].
+                    </p>
+                </div>
+
+                <!-- Value 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm transition-all hover:shadow-md">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 border border-blue-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 tracking-normal">Resilient Compliance</h3>
+                    <p class="text-slate-600 text-sm md:text-base font-normal leading-relaxed">
+                        Connect risk, compliance, and business continuity to build a more resilient organization[cite: 6].
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. CTA BUTTONS FOR CLIENTS TO REACH OUT -->
+    <section id="contact-cta" class="py-20 px-6 md:px-16 bg-slate-900 text-white text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10 space-y-6">
+            <h2 class="text-3xl md:text-4xl font-bold tracking-normal leading-snug">
+                Ready to Automate Your Cyber GRC Program?
+            </h2>
+            <p class="text-slate-300 text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
+                Connect with AA-Consulting's team to explore how Commugen can help your organization automate GRC processes, strengthen risk management, and maintain a more resilient compliance posture[cite: 6].
+            </p>
+            <div class="pt-4 flex flex-wrap justify-center gap-4">
+                <a href="../contact.html" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-3.5 rounded-full transition-all text-xs uppercase tracking-wider">
+                    Get in Touch
+                </a>
+                <a href="../contact.html" class="border border-white/20 hover:border-white/40 bg-white/5 text-white font-semibold px-8 py-3.5 rounded-full transition-all text-xs uppercase tracking-wider">
+                    Request Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FOOTER -->
+    <footer class="bg-[#030712] text-slate-400 py-12 px-6 md:px-16 border-t border-slate-800 text-xs">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <span class="text-white font-bold tracking-wider text-sm uppercase">AA-Consulting</span>
+                <span class="text-slate-600">|</span>
+                <span class="font-normal">Global Cybersecurity Excellence</span>
+            </div>
+            <div class="flex gap-6 font-normal">
+                <a href="../index.html" class="hover:text-white transition">Home</a>
+                <a href="../about.html" class="hover:text-white transition">About Us</a>
+                <a href="../solutions.html" class="hover:text-white transition">Solutions</a>
+                <a href="../contact.html" class="hover:text-white transition">Contact Us</a>
+            </div>
+            <div class="font-normal">
+                &copy; AA-Consulting. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        function toggleMobileSubmenu() {
+            const submenu = document.getElementById('mobileSubmenu');
+            const arrow = document.getElementById('mobileSubmenuArrow');
+            submenu.classList.toggle('hidden');
+            submenu.classList.toggle('flex');
+            arrow.classList.toggle('rotate-180');
+        }
+    </script>
+
+</body>
+</html>
