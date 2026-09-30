@@ -148,131 +148,129 @@
 </head>
 <body class="antialiased">
 
-    <!-- UNIFORM HEADER INTERFACE -->
-    <header class="fixed top-0 left-0 w-full z-[100] px-4 md:px-6 pt-3 flex justify-center pointer-events-none">
-        <div class="w-full max-w-[98vw] bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-full px-5 py-3.5 md:px-12 md:py-4 shadow-xl pointer-events-auto">
-            <nav class="flex justify-between items-center w-full">
+    <!-- SYNCED HEADER INTERFACE -->
+<header class="fixed -top-3 left-0 w-full z-[100] px-4 md:px-6 pt-3 flex justify-center pointer-events-none">
+    <div class="w-full max-w-[98vw] bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-full px-5 py-3.5 md:px-12 md:py-4 shadow-xl pointer-events-auto">
+        <nav class="flex justify-between items-center w-full">
+            
+            <div class="flex items-center">
+                <a href="../index.html" class="flex items-center gap-4 group">
+                    <img src="../images/AA logo.png" alt="AA Consulting Logo" style="height: 40px; width: auto;" class="brightness-110 transition-transform group-hover:scale-105">
+                </a>
+            </div>
+            
+            <!-- MOBILE MENU BUTTON -->
+            <button type="button" onclick="toggleMobileMenu()" class="flex flex-col gap-1.5 cursor-pointer md:hidden p-2 focus:outline-none" aria-label="Toggle Menu">
+                <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+            </button>
+            
+            <!-- DESKTOP NAVIGATION -->
+            <div class="hidden md:flex flex-row items-center gap-6 md:gap-10">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../about.html" class="nav-link">About Us</a>
                 
-                <div class="flex items-center">
-                    <a href="../index.html" class="flex items-center gap-4 group">
-                        <img src="../images/AA logo.png" alt="AA Consulting Logo" style="height: 40px; width: auto;" class="brightness-110 transition-transform group-hover:scale-105">
+                <!-- SOLUTIONS WITH EXACT MATCH REFERENCE SHADE -->
+                <div class="dropdown-wrapper">
+                      <!-- href="solutions.html" -->
+                            <a  class="opacity-80 hover:opacity-100 transition flex items-center gap-1.5" style="color: #94a3b8; text-transform: uppercase; font-weight: 800; letter-spacing: 0.05em; font-size: 11px;">
+                                Solutions
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
                     </a>
+
+                    <!-- EXACT MATCH DROPDOWN BOX COLOR & BORDER -->
+                    <div class="dropdown-menu" style="width: 580px;">
+                        <div class="bg-[#081326]/95 backdrop-blur-2xl border border-blue-500/30 rounded-2xl p-4 shadow-[0_20px_50px_rgba(8,19,38,0.9)] grid grid-cols-2 gap-2 text-left">
+                            
+                            <a href="cyberark.html" Cyberark class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                <div class="w-7 h-7 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
                 </div>
-                
-                <!-- MOBILE MENU BUTTON -->
-                <button type="button" onclick="toggleMobileMenu()" class="flex flex-col gap-1.5 cursor-pointer md:hidden p-2 focus:outline-none" aria-label="Toggle Menu">
-                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
-                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
-                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
-                </button>
-                
-                <!-- DESKTOP NAVIGATION -->
-                <div class="hidden md:flex flex-row items-center gap-6 md:gap-10">
-                    <a href="../index.html" class="nav-link">Home</a>
-                    <a href="../about.html" class="nav-link">About Us</a>
-                    
-                    <!-- SOLUTIONS DROPDOWN -->
-                    <div class="dropdown-wrapper group">
-                        <a href="../solutions.html" class="nav-link active flex items-center gap-1.5 py-2">
-                            Solutions
-                            <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                            <span class="absolute -bottom-1 left-0 w-full h-[2px] bg-blue-600"></span>
-                        </a>
+                <div>
+                    <div class="text-white font-bold text-[11px]">CyberArk</div>
+                    <div class="text-slate-400 text-[10px]">Identity Security & PAM</div>
+                </div>
+            </a>
 
-                        <!-- DROPDOWN PANEL -->
-                        <div class="dropdown-menu w-[520px]">
-                            <div class="bg-slate-900/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-4 shadow-2xl grid grid-cols-2 gap-2">
-                                <a href="palo-alto.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
-                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-white tracking-wider uppercase">Palo Alto</div>
-                                        <div class="text-[11px] text-slate-400">Next-Gen Perimeter Defense</div>
-                                    </div>
-                                </a>
+            <a href="vicarius.html" Vicarius class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                <div class="w-7 h-7 rounded-lg bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-400 shrink-0 mt-0.5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"></path></svg>
+                </div>
+                <div>
+                    <div class="text-white font-bold text-[11px]">Vicarius</div>
+                    <div class="text-slate-400 text-[10px]">Vulnerability Management</div>
+                </div>
+            </a>
+  <a href="trellix.html" Trellix class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                <div class="w-7 h-7 rounded-lg bg-red-500/15 border border-red-500/30 flex items-center justify-center text-red-400 shrink-0 mt-0.5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                </div>
+                <div>
+                    <div class="text-white font-bold text-[11px]">Trellix</div>
+                    <div class="text-slate-400 text-[10px]">Database Security & DAM</div>
+                </div>
+            </a>
+            <a href="akeyless.html" Akeyless class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                <div class="w-7 h-7 rounded-lg bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0 mt-0.5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0115.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
+                </div>
+                <div>
+                    <div class="text-white font-bold text-[11px]">Akeyless</div>
+                    <div class="text-slate-400 text-[10px]">Vaultless Secrets Management</div>
+                </div>
+            </a>
+<a href="palo-alto.html" Palo Alto class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                <div class="w-7 h-7 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <div>
+                    <div class="text-white font-bold text-[11px]">Palo Alto</div>
+                    <div class="text-slate-400 text-[10px]">Next-Gen Perimeter Defense</div>
+                </div>
+            </a>
+            <a href="deepkeep.html" Deepkeep class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <div>
+                    <div class="text-white font-bold text-[11px]">DeepKeep</div>
+                    <div class="text-slate-400 text-[10px]">AI & LLM Security Platform</div>
+                </div>
+            </a>
 
-                                <a href="cyberark.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
-                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 0121 9z"></path></svg>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-white tracking-wider uppercase">CyberArk</div>
-                                        <div class="text-[11px] text-slate-400">Identity Security & PAM</div>
-                                    </div>
-                                </a>
+          
 
-                                <a href="vicarius.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
-                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-white tracking-wider uppercase">Vicarius</div>
-                                        <div class="text-[11px] text-slate-400">Patchless Vulnerability Mgmt</div>
-                                    </div>
-                                </a>
+            <a href="cynet.html" Cynet class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                <div class="w-7 h-7 rounded-lg bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0 mt-0.5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </div>
+                <div>
+                    <div class="text-white font-bold text-[11px]">Cynet</div>
+                    <div class="text-slate-400 text-[10px]">All-in-One Autonomous XDR</div>
+                </div>
+            </a>
 
-                                <a href="akeyless.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
-                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-white tracking-wider uppercase">Akeyless</div>
-                                        <div class="text-[11px] text-slate-400">Vaultless Secrets Management</div>
-                                    </div>
-                                </a>
+            <a href="commugen.html" Commugen class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                <div class="w-7 h-7 rounded-lg bg-sky-500/15 border border-sky-500/30 flex items-center justify-center text-sky-400 shrink-0 mt-0.5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                </div>
+                <div>
+                    <div class="text-white font-bold text-[11px]">Commugen</div>
+                    <div class="text-slate-400 text-[10px]">Cyber GRC & Automation</div>
+                </div>
+            </a>
 
-                                <a href="deepkeep.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
-                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-white tracking-wider uppercase">DeepKeep</div>
-                                        <div class="text-[11px] text-slate-400">AI & LLM Security Platform</div>
-                                    </div>
-                                </a>
-
-                                <a href="trellix.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
-                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-white tracking-wider uppercase">Trellix</div>
-                                        <div class="text-[11px] text-slate-400">Database Security & DAM</div>
-                                    </div>
-                                </a>
-
-                                <a href="cynet.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
-                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-white tracking-wider uppercase">Cynet</div>
-                                        <div class="text-[11px] text-slate-400">All-in-One Autonomous XDR</div>
-                                    </div>
-                                </a>
-
-                                <a href="commugen.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/10 transition-all group/item">
-                                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-white tracking-wider uppercase">Commugen</div>
-                                        <div class="text-[11px] text-slate-400">Cyber GRC & Automation</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+              </div>
                     </div>
-
-                    <a href="../resources.html" class="nav-link">Resources</a>
-                    <a href="../contact.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full transition-all shadow-lg shadow-blue-600/20 text-[14px] font-bold">Contact Us</a>
                 </div>
-            </nav>
-        </div>
-    </header>
+
+                <a href="../resources.html" class="nav-link">Resources</a>
+                <a href="../contact.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full transition-all shadow-lg shadow-blue-600/20 text-[14px] font-bold">BOOK A DEMO</a>
+            </div>
+        </nav>
+    </div>
+</header>
 
     <!-- MOBILE OVERLAY MENU -->
     <div id="mobileMenu" class="mobile-overlay">
@@ -310,7 +308,7 @@
         </div>
     </div>
 
-    <!-- MINI HERO SECTION -->
+    <!-- 1. MINI HERO SECTION -->
     <section class="mini-hero text-white pt-36 pb-16 md:pt-40 md:pb-20 px-6 md:px-16 text-center">
         <div class="max-w-4xl mx-auto space-y-6">
             
@@ -324,7 +322,7 @@
             </h1>
 
             <p class="text-slate-300 text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
-                Automate cybersecurity governance, risk, and compliance through automated workflows, dashboards, and intelligent capabilities.
+                Automate cybersecurity governance, risk, and compliance through automated workflows, dashboards, and intelligent capabilities[cite: 6].
             </p>
 
             <div class="pt-2 flex flex-wrap justify-center gap-4">
@@ -339,10 +337,11 @@
         </div>
     </section>
 
-    <!-- PROBLEM STATEMENT & IN-DEPTH SOLUTION -->
+    <!-- 2 & 3. PROBLEM STATEMENT & IN-DEPTH SOLUTION -->
     <section id="solution-details" class="py-20 md:py-24 px-6 md:px-16 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
+            <!-- LEFT COLUMN: PROBLEM STATEMENT -->
             <div class="lg:col-span-6 space-y-7">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-red-50 text-red-600 border border-red-100 text-xs font-semibold tracking-wide">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
@@ -357,21 +356,22 @@
 
                 <div class="space-y-4 text-slate-600 text-base md:text-lg leading-relaxed font-normal">
                     <p>
-                        Cybersecurity is not only about preventing attacks. Organizations must also understand their cyber risk, manage vulnerabilities, demonstrate compliance, maintain policies, assess third parties and provide leadership with a clear view of their security posture.
+                        Cybersecurity is not only about preventing attacks. Organizations must also understand their cyber risk, manage vulnerabilities, demonstrate compliance, maintain policies, assess third parties and provide leadership with a clear view of their security posture[cite: 6].
                     </p>
                     <p>
-                        Many organizations still manage risk, compliance activities, assessments and evidence through spreadsheets, emails and disconnected processes. As requirements increase, these manual processes become difficult to maintain and offer limited visibility.
+                        Many organizations still manage risk, compliance activities, assessments and evidence through spreadsheets, emails and disconnected processes[cite: 6]. As requirements increase, these manual processes become difficult to maintain and offer limited visibility[cite: 6].
                     </p>
                 </div>
 
                 <div class="pt-6 border-t border-slate-200">
                     <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">The Core Goal</span>
                     <p class="text-base md:text-lg font-semibold text-slate-900 leading-normal">
-                        Streamline governance, risk, and compliance while improving visibility, accountability, and operational efficiency.
+                        Streamline governance, risk, and compliance while improving visibility, accountability, and operational efficiency[cite: 6].
                     </p>
                 </div>
             </div>
 
+            <!-- RIGHT COLUMN: SOLUTION INTRODUCED IN-DEPTH -->
             <div class="lg:col-span-6">
                 <div class="solution-card p-8 md:p-10 rounded-2xl">
                     
@@ -388,10 +388,10 @@
 
                     <div class="space-y-4 text-slate-600 text-base leading-relaxed font-normal mb-8">
                         <p>
-                            In partnership with Commugen, AA-Consulting supports organizations in implementing a no-code Cyber GRC automation platform.
+                            In partnership with Commugen, AA-Consulting supports organizations in implementing a no-code Cyber GRC automation platform[cite: 6].
                         </p>
                         <p>
-                            The platform helps security and risk teams bring risk, compliance, vulnerabilities, assets, third-party risk, and related activities into a centralized, structured environment.
+                            The platform helps security and risk teams bring risk, compliance, vulnerabilities, assets, third-party risk, and related activities into a centralized, structured environment[cite: 6].
                         </p>
                     </div>
 
@@ -411,7 +411,7 @@
         </div>
     </section>
 
-    <!-- KEY FEATURES OFFERED BY THE SOLUTION -->
+    <!-- 4. KEY FEATURES OFFERED BY THE SOLUTION -->
     <section class="bg-[#0b1120] text-white py-20 md:py-24 px-6 md:px-16 border-t border-slate-800">
         <div class="max-w-7xl mx-auto">
             
@@ -429,7 +429,7 @@
                     <div>
                         <h4 class="text-lg font-bold text-white mb-2 tracking-normal">Adaptable No-Code Architecture</h4>
                         <p class="text-slate-400 text-sm md:text-base font-normal leading-relaxed">
-                            Adapt your GRC processes to changing requirements without relying on code.
+                            Adapt your GRC processes to changing requirements without relying on code[cite: 6].
                         </p>
                     </div>
                 </div>
@@ -439,7 +439,7 @@
                     <div>
                         <h4 class="text-lg font-bold text-white mb-2 tracking-normal">Automated GRC Tasks</h4>
                         <p class="text-slate-400 text-sm md:text-base font-normal leading-relaxed">
-                            Automate the GRC tasks that consume your team's time and reduce manual effort.
+                            Automate the GRC tasks that consume your team's time and reduce manual effort[cite: 6].
                         </p>
                     </div>
                 </div>
@@ -449,7 +449,7 @@
                     <div>
                         <h4 class="text-lg font-bold text-white mb-2 tracking-normal">Centralized Evidence & Controls</h4>
                         <p class="text-slate-400 text-sm md:text-base font-normal leading-relaxed">
-                            Bring controls, evidence, assessments, and remediation into one unified environment.
+                            Bring controls, evidence, assessments, and remediation into one unified environment[cite: 6].
                         </p>
                     </div>
                 </div>
@@ -459,7 +459,7 @@
                     <div>
                         <h4 class="text-lg font-bold text-white mb-2 tracking-normal">Multi-Framework Management</h4>
                         <p class="text-slate-400 text-sm md:text-base font-normal leading-relaxed">
-                            Manage multiple compliance frameworks simultaneously without managing them separately.
+                            Manage multiple compliance frameworks simultaneously without managing them separately[cite: 6].
                         </p>
                     </div>
                 </div>
@@ -469,7 +469,7 @@
         </div>
     </section>
 
-    <!-- VALUE PROPOSITION TO THE CLIENT -->
+    <!-- 5. VALUE PROPOSITION TO THE CLIENT -->
     <section class="py-20 md:py-24 px-6 md:px-16 bg-slate-50/70 border-t border-b border-slate-200">
         <div class="max-w-7xl mx-auto">
             
@@ -479,12 +479,13 @@
                     What Your Organization Stands to Gain
                 </h2>
                 <p class="text-slate-600 text-base md:text-lg mt-3 font-normal leading-relaxed">
-                    Deploying Commugen with AA-Consulting delivers clear business value across risk visibility, decision-making, and organizational resilience.
+                    Deploying Commugen with AA-Consulting delivers clear business value across risk visibility, decision-making, and organizational resilience[cite: 6].
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
+                <!-- Value 1 -->
                 <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm transition-all hover:shadow-md">
                     <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 border border-blue-100">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
@@ -493,10 +494,11 @@
                     </div>
                     <h3 class="text-xl font-bold text-slate-800 mb-3 tracking-normal">Enhanced Risk Visibility</h3>
                     <p class="text-slate-600 text-sm md:text-base font-normal leading-relaxed">
-                        Gain a clearer view of your organization's cyber risk and what requires immediate attention.
+                        Gain a clearer view of your organization's cyber risk and what requires immediate attention[cite: 6].
                     </p>
                 </div>
 
+                <!-- Value 2 -->
                 <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm transition-all hover:shadow-md">
                     <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 border border-blue-100">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
@@ -505,10 +507,11 @@
                     </div>
                     <h3 class="text-xl font-bold text-slate-800 mb-3 tracking-normal">Data-Driven Decisions</h3>
                     <p class="text-slate-600 text-sm md:text-base font-normal leading-relaxed">
-                        Turn complex GRC data and cyber risks into clear, measurable insights for better risk-based decisions.
+                        Turn complex GRC data and cyber risks into clear, measurable insights for better risk-based decisions[cite: 6].
                     </p>
                 </div>
 
+                <!-- Value 3 -->
                 <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm transition-all hover:shadow-md">
                     <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 border border-blue-100">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
@@ -517,7 +520,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-slate-800 mb-3 tracking-normal">Resilient Compliance</h3>
                     <p class="text-slate-600 text-sm md:text-base font-normal leading-relaxed">
-                        Connect risk, compliance, and business continuity to build a more resilient organization.
+                        Connect risk, compliance, and business continuity to build a more resilient organization[cite: 6].
                     </p>
                 </div>
 
@@ -526,14 +529,14 @@
         </div>
     </section>
 
-    <!-- CTA BUTTONS FOR CLIENTS TO REACH OUT -->
+    <!-- 6. CTA BUTTONS FOR CLIENTS TO REACH OUT -->
     <section id="contact-cta" class="py-20 px-6 md:px-16 bg-slate-900 text-white text-center relative overflow-hidden">
         <div class="max-w-4xl mx-auto relative z-10 space-y-6">
             <h2 class="text-3xl md:text-4xl font-bold tracking-normal leading-snug">
                 Ready to Automate Your Cyber GRC Program?
             </h2>
             <p class="text-slate-300 text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
-                Connect with AA-Consulting's team to explore how Commugen can help your organization automate GRC processes, strengthen risk management, and maintain a more resilient compliance posture.
+                Connect with AA-Consulting's team to explore how Commugen can help your organization automate GRC processes, strengthen risk management, and maintain a more resilient compliance posture[cite: 6].
             </p>
             <div class="pt-4 flex flex-wrap justify-center gap-4">
                 <a href="../contact.html" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-3.5 rounded-full transition-all text-xs uppercase tracking-wider">
@@ -546,7 +549,7 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- 7. FOOTER -->
     <footer class="bg-[#030712] text-slate-400 py-12 px-6 md:px-16 border-t border-slate-800 text-xs">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-3">
