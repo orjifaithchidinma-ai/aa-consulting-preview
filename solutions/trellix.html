@@ -117,13 +117,13 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
         }
 
-        /* ELEVATED CARD */
         .solution-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
-            position: relative;
-        }
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
+    position: relative;
+    overflow: hidden; /* Clips the top accent line to the card's rounded corners */
+}
 
         .solution-card::before {
             content: '';
@@ -352,7 +352,7 @@
                 </div>
 
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-normal leading-snug">
-                    Databases Contain Critical & Sensitive Information
+                    When database activity and vulnerabilities go unnoticed.
                 </h2>
 
                 <div class="space-y-4 text-slate-600 text-base md:text-lg leading-relaxed font-normal">

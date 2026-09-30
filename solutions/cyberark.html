@@ -117,13 +117,13 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
         }
 
-        /* ELEVATED CARD */
-        .solution-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
-            position: relative;
-        }
+       .solution-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
+    position: relative;
+    overflow: hidden; /* Clips the top accent line to the card's rounded corners */
+}
 
         .solution-card::before {
             content: '';
@@ -361,7 +361,7 @@
                         Privileged accounts and credentials provide powerful access to an organization's most sensitive resources. If these identities are compromised, attackers can gain unauthorized entry, move laterally across systems, and compromise core assets.
                     </p>
                     <p>
-                        Organizations must balance security with agility—granting legitimate users, admins, third parties, and applications access without exposing the environment to unaccountable risks.
+                        Organizations must balance security with agility, granting legitimate users, admins, third parties, and applications access, without exposing the environment to unaccountable risks.
                     </p>
                 </div>
 

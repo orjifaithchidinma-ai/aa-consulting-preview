@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akeyless Platform | AA-Consulting</title>
+    <title>Akeyless Vaultless Secrets Management | AA-Consulting</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -117,12 +117,12 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
         }
 
-        /* ELEVATED CARD */
         .solution-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
             box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
             position: relative;
+            overflow: hidden;
         }
 
         .solution-card::before {
@@ -148,130 +148,130 @@
 </head>
 <body class="antialiased">
 
-    <!-- SYNCED HEADER INTERFACE -->
-    <header class="fixed -top-3 left-0 w-full z-[100] px-4 md:px-6 pt-3 flex justify-center pointer-events-none">
-        <div class="w-full max-w-[98vw] bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-full px-5 py-3.5 md:px-12 md:py-4 shadow-xl pointer-events-auto">
-            <nav class="flex justify-between items-center w-full">
+  <!-- SYNCED HEADER INTERFACE -->
+<header class="fixed -top-3 left-0 w-full z-[100] px-4 md:px-6 pt-3 flex justify-center pointer-events-none">
+    <div class="w-full max-w-[98vw] bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-full px-5 py-3.5 md:px-12 md:py-4 shadow-xl pointer-events-auto">
+        <nav class="flex justify-between items-center w-full">
+            
+            <div class="flex items-center">
+                <a href="../index.html" class="flex items-center gap-4 group">
+                    <img src="../images/AA logo.png" alt="AA Consulting Logo" style="height: 40px; width: auto;" class="brightness-110 transition-transform group-hover:scale-105">
+                </a>
+            </div>
+            
+            <!-- MOBILE MENU BUTTON -->
+            <button type="button" onclick="toggleMobileMenu()" class="flex flex-col gap-1.5 cursor-pointer md:hidden p-2 focus:outline-none" aria-label="Toggle Menu">
+                <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+            </button>
+            
+            <!-- DESKTOP NAVIGATION -->
+            <div class="hidden md:flex flex-row items-center gap-6 md:gap-10">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../about.html" class="nav-link">About Us</a>
                 
-                <div class="flex items-center">
-                    <a href="../index.html" class="flex items-center gap-4 group">
-                        <img src="../images/AA logo.png" alt="AA Consulting Logo" style="height: 40px; width: auto;" class="brightness-110 transition-transform group-hover:scale-105">
+                <!-- SOLUTIONS WITH EXACT MATCH REFERENCE SHADE -->
+                <div class="dropdown-wrapper">
+                    <a class="opacity-80 hover:opacity-100 transition flex items-center gap-1.5" style="color: #94a3b8; text-transform: uppercase; font-weight: 800; letter-spacing: 0.05em; font-size: 11px;">
+                        Solutions
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
                     </a>
-                </div>
-                
-                <!-- MOBILE MENU BUTTON -->
-                <button type="button" onclick="toggleMobileMenu()" class="flex flex-col gap-1.5 cursor-pointer md:hidden p-2 focus:outline-none" aria-label="Toggle Menu">
-                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
-                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
-                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
-                </button>
-                
-                <!-- DESKTOP NAVIGATION -->
-                <div class="hidden md:flex flex-row items-center gap-6 md:gap-10">
-                    <a href="../index.html" class="nav-link">Home</a>
-                    <a href="../about.html" class="nav-link">About Us</a>
-                    
-                    <!-- SOLUTIONS DROPDOWN -->
-                    <div class="dropdown-wrapper">
-                          <!-- href="solutions.html" -->
-                            <a  class="opacity-80 hover:opacity-100 transition flex items-center gap-1.5" style="color: #94a3b8; text-transform: uppercase; font-weight: 800; letter-spacing: 0.05em; font-size: 11px;">
-                                Solutions
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-                        </a>
 
-                        <div class="dropdown-menu" style="width: 580px;">
-                            <div class="bg-[#081326]/95 backdrop-blur-2xl border border-blue-500/30 rounded-2xl p-4 shadow-[0_20px_50px_rgba(8,19,38,0.9)] grid grid-cols-2 gap-2 text-left">
-                                
-   <a href="cyberark.html" Cyberark class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
-                <div class="w-7 h-7 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
-                </div>
-                <div>
-                    <div class="text-white font-bold text-[11px]">CyberArk</div>
-                    <div class="text-slate-400 text-[10px]">Identity Security & PAM</div>
-                </div>
-            </a>
+                    <!-- EXACT MATCH DROPDOWN BOX COLOR & BORDER -->
+                    <div class="dropdown-menu" style="width: 580px;">
+                        <div class="bg-[#081326]/95 backdrop-blur-2xl border border-blue-500/30 rounded-2xl p-4 shadow-[0_20px_50px_rgba(8,19,38,0.9)] grid grid-cols-2 gap-2 text-left">
+                            
+                            <a href="cyberark.html" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">CyberArk</div>
+                                    <div class="text-slate-400 text-[10px]">Identity Security & PAM</div>
+                                </div>
+                            </a>
 
-            <a href="vicarius.html" Vicarius class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
-                <div class="w-7 h-7 rounded-lg bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-400 shrink-0 mt-0.5">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"></path></svg>
-                </div>
-                <div>
-                    <div class="text-white font-bold text-[11px]">Vicarius</div>
-                    <div class="text-slate-400 text-[10px]">Vulnerability Management</div>
-                </div>
-            </a>
-  <a href="trellix.html" Trellix class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
-                <div class="w-7 h-7 rounded-lg bg-red-500/15 border border-red-500/30 flex items-center justify-center text-red-400 shrink-0 mt-0.5">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
-                </div>
-                <div>
-                    <div class="text-white font-bold text-[11px]">Trellix</div>
-                    <div class="text-slate-400 text-[10px]">Database Security & DAM</div>
-                </div>
-            </a>
-            <a href="akeyless.html" Akeyless class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
-                <div class="w-7 h-7 rounded-lg bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0 mt-0.5">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0115.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
-                </div>
-                <div>
-                    <div class="text-white font-bold text-[11px]">Akeyless</div>
-                    <div class="text-slate-400 text-[10px]">Vaultless Secrets Management</div>
-                </div>
-            </a>
-<a href="palo-alto.html" Palo Alto class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
-                <div class="w-7 h-7 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                </div>
-                <div>
-                    <div class="text-white font-bold text-[11px]">Palo Alto</div>
-                    <div class="text-slate-400 text-[10px]">Next-Gen Perimeter Defense</div>
-                </div>
-            </a>
-            <a href="deepkeep.html" Deepkeep class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
-                <div class="w-7 h-7 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                </div>
-                <div>
-                    <div class="text-white font-bold text-[11px]">DeepKeep</div>
-                    <div class="text-slate-400 text-[10px]">AI & LLM Security Platform</div>
-                </div>
-            </a>
+                            <a href="vicarius.html" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">Vicarius</div>
+                                    <div class="text-slate-400 text-[10px]">Vulnerability Management</div>
+                                </div>
+                            </a>
 
-          
+                            <a href="trellix.html" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-red-500/15 border border-red-500/30 flex items-center justify-center text-red-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">Trellix</div>
+                                    <div class="text-slate-400 text-[10px]">Database Security & DAM</div>
+                                </div>
+                            </a>
 
-            <a href="cynet.html" Cynet class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
-                <div class="w-7 h-7 rounded-lg bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0 mt-0.5">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                </div>
-                <div>
-                    <div class="text-white font-bold text-[11px]">Cynet</div>
-                    <div class="text-slate-400 text-[10px]">All-in-One Autonomous XDR</div>
-                </div>
-            </a>
+                            <a href="akeyless.html" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0115.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">Akeyless</div>
+                                    <div class="text-slate-400 text-[10px]">Vaultless Secrets Management</div>
+                                </div>
+                            </a>
 
-            <a href="commugen.html" Commugen class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
-                <div class="w-7 h-7 rounded-lg bg-sky-500/15 border border-sky-500/30 flex items-center justify-center text-sky-400 shrink-0 mt-0.5">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
-                </div>
-                <div>
-                    <div class="text-white font-bold text-[11px]">Commugen</div>
-                    <div class="text-slate-400 text-[10px]">Cyber GRC & Automation</div>
-                </div>
-            </a>
+                            <a href="palo-alto.html" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">Palo Alto</div>
+                                    <div class="text-slate-400 text-[10px]">Next-Gen Perimeter Defense</div>
+                                </div>
+                            </a>
 
+                            <a href="deepkeep.html" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">DeepKeep</div>
+                                    <div class="text-slate-400 text-[10px]">AI & LLM Security Platform</div>
+                                </div>
+                            </a>
 
+                            <a href="cynet.html" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">Cynet</div>
+                                    <div class="text-slate-400 text-[10px]">All-in-One Autonomous XDR</div>
+                                </div>
+                            </a>
 
-                            </div>
+                            <a href="commugen.html" class="solution-dropdown-item p-2.5 rounded-xl border border-white/10 flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-sky-500/15 border border-sky-500/30 flex items-center justify-center text-sky-400 shrink-0 mt-0.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-[11px]">Commugen</div>
+                                    <div class="text-slate-400 text-[10px]">Cyber GRC & Automation</div>
+                                </div>
+                            </a>
+
                         </div>
                     </div>
-
-                    <a href="../resources.html" class="nav-link">Resources</a>
-                    <a href="../contact.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full transition-all shadow-lg shadow-blue-600/20 text-[14px] font-bold">BOOK A DEMO</a>
                 </div>
-            </nav>
-        </div>
-    </header>
+
+                <a href="../resources.html" class="nav-link">Resources</a>
+                <a href="../contact.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full transition-all shadow-lg shadow-blue-600/20 text-[14px] font-bold">BOOK A DEMO</a>
+            </div>
+        </nav>
+    </div>
+</header>
 
     <!-- MOBILE OVERLAY MENU -->
     <div id="mobileMenu" class="mobile-overlay">
@@ -309,28 +309,28 @@
         </div>
     </div>
 
-    <!-- 1. HERO SECTION -->
-    <section class="mini-hero text-white pt-36 pb-16 md:pt-40 md:py-20 px-6 md:px-16 text-center">
+    <!-- 1. MINI HERO SECTION -->
+    <section class="mini-hero text-white pt-36 pb-16 md:pt-40 md:pb-20 px-6 md:px-16 text-center">
         <div class="max-w-4xl mx-auto space-y-6">
             
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-400 text-xs font-semibold tracking-wider">
                 <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
-                <span>Unified Identity Security for AI, Machines, and Humans</span>
+                <span>Vaultless Secrets Management</span>
             </div>
 
             <h1 class="text-3xl md:text-5xl font-bold tracking-normal text-white leading-tight">
-                Unified Identity Security for AI, Machines, and Humans
+                Akeyless Vaultless Secrets Management
             </h1>
 
             <p class="text-slate-300 text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
-                Akeyless provides a unified platform for securing identities, secrets, keys and certificates across humans, machines and AI agents, helping organizations control access and reduce identity-related risks across modern environments.
+                Empowering modern enterprises to secure secrets, machine identities, and credentials with a unified SaaS platform.
             </p>
 
             <div class="pt-2 flex flex-wrap justify-center gap-4">
                 <a href="#solution-details" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-7 py-3 rounded-full transition-all text-xs uppercase tracking-wider">
-                    Explore Solutions
+                    Explore Solution
                 </a>
-                <a href="../contact.html" class="border border-slate-700 bg-slate-800/60 hover:bg-slate-700 text-slate-200 font-semibold px-7 py-3 rounded-full transition-all text-xs uppercase tracking-wider">
+                <a href="#contact-cta" class="border border-slate-700 bg-slate-800/60 hover:bg-slate-700 text-slate-200 font-semibold px-7 py-3 rounded-full transition-all text-xs uppercase tracking-wider">
                     Book a Demo
                 </a>
             </div>
@@ -338,7 +338,7 @@
         </div>
     </section>
 
-    <!-- 2 & 3. PROBLEM SECTION & SOLUTION SECTION -->
+    <!-- 2 & 3. PROBLEM STATEMENT & IN-DEPTH SOLUTION -->
     <section id="solution-details" class="py-20 md:py-24 px-6 md:px-16 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
@@ -352,22 +352,22 @@
                 </div>
 
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-normal leading-snug">
-                    Securing secrets and identities across modern environments
+                    Managing High–Risk Access Across the Modern Enterprise
                 </h2>
 
                 <div class="space-y-4 text-slate-600 text-base md:text-lg leading-relaxed font-normal">
                     <p>
-                        As organizations adopt cloud, DevOps, automation and AI, the number of credentials, secrets and machine identities they need to manage continues to grow.
+                        Privileged accounts and credentials provide powerful access to an organization's most sensitive resources. If these identities are compromised, attackers can gain unauthorized entry, move laterally across systems, and compromise core assets.
                     </p>
                     <p>
-                        Scattered secrets, long-lived credentials and manual access controls can create security gaps while increasing operational complexity.
+                        Organizations must balance security with agility, granting legitimate users, admins, third parties, and applications access, without exposing the environment to unaccountable risks.
                     </p>
                 </div>
 
                 <div class="pt-6 border-t border-slate-200">
-                    <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">The Core Focus</span>
+                    <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">The Core Goal</span>
                     <p class="text-base md:text-lg font-semibold text-slate-900 leading-normal">
-                        Eliminating credential sprawl and manual overhead through automated, centralized management.
+                        Ensure access is strictly controlled, limited, monitored, and fully accountable.
                     </p>
                 </div>
             </div>
@@ -380,29 +380,29 @@
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                         </svg>
-                        <span>THE AKEYLESS SOLUTION</span>
+                        <span>OUR AKEYLESS SOLUTION</span>
                     </div>
 
                     <h3 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-normal leading-snug mb-5">
-                        Unified Cloud-Native Architecture
+                        Proactive Vaultless Implementation
                     </h3>
 
                     <div class="space-y-4 text-slate-600 text-base leading-relaxed font-normal mb-8">
                         <p>
-                            Akeyless provides a unified platform for managing secrets, machine identities, certificates and access across modern IT environments.
+                            In partnership with Akeyless, AA-Consulting implements vaultless secrets management capabilities designed to secure credentials and protect high-risk access paths.
                         </p>
                         <p>
-                            Its cloud-native, zero-knowledge architecture helps organizations centralize control, automate credential management and provide secure, time-bound access without the complexity of maintaining traditional vault infrastructure.
+                            By applying principles like Least Privilege and Just-In-Time access, Akeyless shields sensitive accounts across on-premises, cloud, and hybrid environments from exploitation.
                         </p>
                     </div>
 
                     <div class="pt-6 border-t border-slate-100">
-                        <span class="block text-xs font-bold uppercase tracking-wider text-blue-600 mb-3">Platform Highlights</span>
+                        <span class="block text-xs font-bold uppercase tracking-wider text-blue-600 mb-3">Deployment Scope</span>
                         <div class="flex flex-wrap gap-2 text-xs font-semibold text-slate-700">
-                            <span class="px-3 py-1.5 bg-slate-100 rounded-md border border-slate-200/60">Zero-Knowledge Architecture</span>
-                            <span class="px-3 py-1.5 bg-slate-100 rounded-md border border-slate-200/60">Automated Management</span>
-                            <span class="px-3 py-1.5 bg-slate-100 rounded-md border border-slate-200/60">Time-Bound Access</span>
-                            <span class="px-3 py-1.5 bg-slate-100 rounded-md border border-slate-200/60">Vaultless Design</span>
+                            <span class="px-3 py-1.5 bg-slate-100 rounded-md border border-slate-200/60">On-Premises</span>
+                            <span class="px-3 py-1.5 bg-slate-100 rounded-md border border-slate-200/60">Multi-Cloud</span>
+                            <span class="px-3 py-1.5 bg-slate-100 rounded-md border border-slate-200/60">Hybrid Infrastructure</span>
+                            <span class="px-3 py-1.5 bg-slate-100 rounded-md border border-slate-200/60">DevOps Pipelines</span>
                         </div>
                     </div>
 
@@ -412,45 +412,55 @@
         </div>
     </section>
 
-    <!-- 4. KEY SECURITY CAPABILITIES -->
+    <!-- 4. KEY FEATURES OFFERED BY THE SOLUTION -->
     <section class="bg-[#0b1120] text-white py-20 md:py-24 px-6 md:px-16 border-t border-slate-800">
         <div class="max-w-7xl mx-auto">
             
             <div class="mb-12">
                 <span class="text-blue-400 font-semibold text-xs uppercase tracking-wider block mb-2">Capabilities & Features</span>
                 <h2 class="text-3xl md:text-4xl font-bold tracking-normal text-white">
-                    Key Security Capabilities
+                    Akeyless Core Capabilities
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10 border-t border-slate-800/80 pt-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 border-t border-slate-800/80 pt-10">
                 
-                <div class="capability-item p-6 rounded-xl flex flex-col gap-4 bg-slate-900/50 border border-slate-800">
-                    <span class="text-xl font-bold text-blue-400 font-mono">01</span>
+                <div class="capability-item p-4 rounded-xl flex gap-5 items-start">
+                    <span class="text-lg font-bold text-blue-400 font-mono">01</span>
                     <div>
-                        <h4 class="text-lg font-bold text-white mb-2 tracking-normal">Secrets and Machine Identity Security</h4>
-                        <p class="text-slate-400 text-sm font-normal leading-relaxed">
-                            This controls non-human access across all your applications and cloud systems. It automatically creates, rotates, and tracks API keys, database passwords, and configurations at runtime. This pillar also includes Certificate Lifecycle Management (CLM) to automatically issue and track SSL/TLS machine certificates. This eliminates manual mistakes and stops system downtime caused by expired credentials.
+                        <h4 class="text-lg font-bold text-white mb-2 tracking-normal">Secure Privileged Access</h4>
+                        <p class="text-slate-400 text-sm md:text-base font-normal leading-relaxed">
+                            Proactively isolates and secures administrative credentials before cyber attackers can discover or exploit them.
                         </p>
                     </div>
                 </div>
 
-                <div class="capability-item p-6 rounded-xl flex flex-col gap-4 bg-slate-900/50 border border-slate-800">
-                    <span class="text-xl font-bold text-blue-400 font-mono">02</span>
+                <div class="capability-item p-4 rounded-xl flex gap-5 items-start">
+                    <span class="text-lg font-bold text-blue-400 font-mono">02</span>
                     <div>
-                        <h4 class="text-lg font-bold text-white mb-2 tracking-normal">AI and Agentic Governance</h4>
-                        <p class="text-slate-400 text-sm font-normal leading-relaxed">
-                            This monitors autonomous AI tools and assistants in real time using Agentic Runtime Authority. It sits inline to evaluate actions dynamically and ensure every action matches company policy before execution. This stops prompt injections, privilege drift, and data leaks by replacing permanent passwords with temporary, task-specific access keys that expire immediately.
+                        <h4 class="text-lg font-bold text-white mb-2 tracking-normal">Protect Credentials</h4>
+                        <p class="text-slate-400 text-sm md:text-base font-normal leading-relaxed">
+                            Controls access permissions for sensitive systems, strictly dictating who can access resources, what they view, and when.
                         </p>
                     </div>
                 </div>
 
-                <div class="capability-item p-6 rounded-xl flex flex-col gap-4 bg-slate-900/50 border border-slate-800">
-                    <span class="text-xl font-bold text-blue-400 font-mono">03</span>
+                <div class="capability-item p-4 rounded-xl flex gap-5 items-start">
+                    <span class="text-lg font-bold text-blue-400 font-mono">03</span>
                     <div>
-                        <h4 class="text-lg font-bold text-white mb-2 tracking-normal">Human Privileged Access</h4>
-                        <p class="text-slate-400 text-sm font-normal leading-relaxed">
-                            This protects administrative accounts by removing permanent manager access. Instead, engineers and users get temporary, time-limited permissions that automatically shut down once their task is complete, reducing the risk of internal attacks.
+                        <h4 class="text-lg font-bold text-white mb-2 tracking-normal">Session Monitoring</h4>
+                        <p class="text-slate-400 text-sm md:text-base font-normal leading-relaxed">
+                            Monitors every active privileged session live, maintaining a complete operational audit trail of user activity.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="capability-item p-4 rounded-xl flex gap-5 items-start">
+                    <span class="text-lg font-bold text-blue-400 font-mono">04</span>
+                    <div>
+                        <h4 class="text-lg font-bold text-white mb-2 tracking-normal">Least Privilege Controls</h4>
+                        <p class="text-slate-400 text-sm md:text-base font-normal leading-relaxed">
+                            Eliminates excessive privileges by provisioning access strictly on a need-to-have, temporary basis.
                         </p>
                     </div>
                 </div>
@@ -460,55 +470,58 @@
         </div>
     </section>
 
-    <!-- 5. EXPERTISE & VALUE PROPOSITION -->
+    <!-- 5. VALUE PROPOSITION TO THE CLIENT -->
     <section class="py-20 md:py-24 px-6 md:px-16 bg-slate-50/70 border-t border-b border-slate-200">
         <div class="max-w-7xl mx-auto">
             
             <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-blue-600 font-semibold text-xs uppercase tracking-wider block mb-2">Our Professional Services</span>
+                <span class="text-blue-600 font-semibold text-xs uppercase tracking-wider block mb-2">Measurable Impact</span>
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-normal leading-snug">
-                    Let’s help you elevate your security
+                    What Your Organization Stands to Gain
                 </h2>
                 <p class="text-slate-600 text-base md:text-lg mt-3 font-normal leading-relaxed">
-                    Bringing modern secrets and identity security into your environment. Managing sensitive credentials and identities requires more than simply storing secrets. Organizations need secure access, automated lifecycle management and greater control across increasingly distributed environments.
+                    Deploying Akeyless with AA-Consulting delivers tangible business outcomes across risk management, compliance, and operational efficiency.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
-                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm transition-all hover:shadow-md">
-                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 border border-blue-100">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 tracking-normal">Secret Discovery & Audit</h3>
-                    <p class="text-slate-600 text-sm md:text-base font-normal leading-relaxed">
-                        Uncover hardcoded secrets, dangling machine identities, and credential sprawl across your entire DevOps pipeline.
-                    </p>
-                </div>
-
-                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm transition-all hover:shadow-md">
-                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 border border-blue-100">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 tracking-normal">Vaultless Migration Design</h3>
-                    <p class="text-slate-600 text-sm md:text-base font-normal leading-relaxed">
-                        Architect smooth transitions from legacy vault setups to a streamlined SaaS-based or hybrid secrets management model.
-                    </p>
-                </div>
-
+                <!-- Value 1: Attack Surface -->
                 <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm transition-all hover:shadow-md">
                     <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 border border-blue-100">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 tracking-normal">Automated Enforcement</h3>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 tracking-normal">Reduce Attack Surface</h3>
                     <p class="text-slate-600 text-sm md:text-base font-normal leading-relaxed">
-                        Deploy dynamic run-time rotation policies and certificate lifecycles with continuous compliance oversight.
+                        Eliminate hardcoded passwords and unmonitored admin access, closing up to 80% of common internal attack pathways.
+                    </p>
+                </div>
+
+                <!-- Value 2: Compliance -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm transition-all hover:shadow-md">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 border border-blue-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 tracking-normal">Accelerate Compliance</h3>
+                    <p class="text-slate-600 text-sm md:text-base font-normal leading-relaxed">
+                        Effortlessly satisfy stringent audit requirements (ISO 27001, PCI-DSS, SOC 2) with automated, centralized session recording and reports.
+                    </p>
+                </div>
+
+                <!-- Value 3: Security Overhead -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm transition-all hover:shadow-md">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 border border-blue-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 tracking-normal">Lower Security Overhead</h3>
+                    <p class="text-slate-600 text-sm md:text-base font-normal leading-relaxed">
+                        Save administrative time with automated credential rotations and expert support from AA-Consulting engineers.
                     </p>
                 </div>
 
@@ -517,21 +530,21 @@
         </div>
     </section>
 
-    <!-- 6. FINAL CTA -->
+    <!-- 6. CTA BUTTONS FOR CLIENTS TO REACH OUT -->
     <section id="contact-cta" class="py-20 px-6 md:px-16 bg-slate-900 text-white text-center relative overflow-hidden">
         <div class="max-w-4xl mx-auto relative z-10 space-y-6">
             <h2 class="text-3xl md:text-4xl font-bold tracking-normal leading-snug">
-                Take Control of Your Secrets and Identities
+                Ready to Secure Your Enterprise Secrets?
             </h2>
             <p class="text-slate-300 text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
-                Modern organizations need a secure and scalable way to manage access across humans, machines and increasingly autonomous systems. Talk to our team to explore how Akeyless can support your organization's secrets and identity security strategy.
+                Connect with AA-Consulting's cybersecurity architects to assess your secrets management readiness and request a tailored demonstration.
             </p>
             <div class="pt-4 flex flex-wrap justify-center gap-4">
                 <a href="../contact.html" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-3.5 rounded-full transition-all text-xs uppercase tracking-wider">
-                    Book a Demo
+                    Get in Touch
                 </a>
                 <a href="../contact.html" class="border border-white/20 hover:border-white/40 bg-white/5 text-white font-semibold px-8 py-3.5 rounded-full transition-all text-xs uppercase tracking-wider">
-                    Contact Us
+                    Request Demo
                 </a>
             </div>
         </div>
